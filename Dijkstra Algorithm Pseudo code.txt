@@ -1,0 +1,41 @@
+
+// 1.Mayıs.2016
+
+// Ömer Faruk KOÇ
+
+
+
+//Graf nesnesi tanımlanan düğümlerin tamamından oluşan graf
+//kaynak değişkeni uzaklık hesaplamasına ilk başlanacak düğüm
+
+function dijkstra (Graf, ilkDugum)
+{
+	foreach V Grafin dügümü			// V değişkeni Graf nesnesinin bir düğümü olduğu sürece dön
+	{
+		uzaklik[V] = sonsuz;		// İlk başta tüm düğümler arası uzaklıklar sonsuz olarak tanımlandı
+		onceki[V] = tanımsız;		// İlk başta tüm düğümlerin önceki düğümleri tanımsız olarak tanımlandı
+		uzaklik[ilkDugum] = 0;		// İlk düğümün kendine olan uzaklığı 0 olarak tanımlandı
+	}
+	
+	Graf q;							// Graf nesnesinden q nesnesi türetildi
+	
+	while q bos degilse				// q Nesnesi boş olmadığı sürece dön
+	{
+		U = q.enKucukUzakligaSahipDugumuBul();		// U Değişkenine q grafının içindeki en küçük uzaklığa sahip düğümü atıldı
+		q dan U yu kaldir;							// Sonra q grafından o U düğümü silindi
+		
+		foreach V U nun komsusu						// U düğümünün komşu düğümleri(V)'nin hepsi taranana kadar dön
+		{
+			toplamUzaklik = uzaklik[U] + dugumlerArasiUzakligiHesapla(U,V);		// U'nun uzaklığı ile U ve komşusu V arasındaki uzaklık hesaplanıp toplandı
+			
+			if(toplamUzaklik < uzaklik[V])			// Bulunan yeni uzaklık V düğümünün uzaklığından küçükse
+			{
+				uzaklik[V] = toplamUzaklik;			// V nin uzaklığını bulunan yeni uzaklıkla güncelle
+				onceki[V] = U;						// V nin önceki düğümünü en kısa yoldan gelinen yeni düğümle güncelle
+			}
+		}
+	}
+	
+	return uzaklik[], onceki[];						// Düğümler arası uzaklık ve komşuluk bilgilerini tutan dizileri geri döndür 
+}
+		
