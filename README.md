@@ -1,2 +1,2 @@
 # c--DijkstraAlgorithm
-c# Dijkstra's Algorithm - Dijkstra En Kısa Yol Algoritması
+c# Dijkstra's Shortest Path Algorithm 
